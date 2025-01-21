@@ -1,0 +1,15 @@
+gradio
+
+# Database libraries
+databases
+sqlalchemy
+asyncpg
+psycopg2
+psycopg2-binary
+
+
+python-dotenv
+
+# Configuration and settings management
+pydantic
+pydantic-settings
