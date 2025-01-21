@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  troll:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "7860:7860"
+    environment:
+      - PYTHONDONTWRITEBYTECODE=1
+      - PYTHONUNBUFFERED=1
+      - DATALAKE_API_URL=http://datalake_api:8000 # Example environment variable
+    volumes:
+      - .:/app
+    depends_on:
+      - datalake_api
+
+  datalake_api:
+    image: your-datalake-api-image:latest
+    container_name: datalake_api
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://user:password@localhost/vitaledge_datalake
+    # You can replace this service with your Datalake API setup
